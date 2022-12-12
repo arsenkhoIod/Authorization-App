@@ -67,7 +67,7 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="logInButtonPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="Dk3-z7-JUu"/>
-                                    <segue destination="hay-iZ-vq0" kind="show" id="d0f-cQ-J64"/>
+                                    <segue destination="hay-iZ-vq0" kind="presentation" id="0Ht-2B-JFG"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -128,6 +128,9 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Log Out">
                                     <fontDescription key="titleFontDescription" type="system" pointSize="25"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <segue destination="3u4-pc-zBX" kind="unwind" unwindAction="unwindFor:towards:" id="xNa-dG-n90"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="fB8-LS-au5"/>
@@ -153,6 +156,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yab-xt-wiS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="3u4-pc-zBX" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="962.59541984732823" y="-2.1126760563380285"/>
         </scene>

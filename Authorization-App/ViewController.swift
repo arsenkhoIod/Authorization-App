@@ -20,8 +20,21 @@ final class LoginViewController: UIViewController {//final - чтобы от э�
         loginVC.userName = login
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        userNameTF.endEditing(true)
+        passwordTF.endEditing(true)
+    }
+    
+    //почему-то не работает, хотя подключил :/
+    @IBAction override func unwind(for unwindSegue: UIStoryboardSegue,
+                                   towards subsequentVC: UIViewController) {
+        userNameTF.text = ""
+        passwordTF.text = ""
+    }
+    
     @IBAction func logInButtonPressed() {
-        if userNameTF.text != login && passwordTF.text != password {
+        if userNameTF.text != login || passwordTF.text != password {
             showAlertMessage(title: "Your user name or password is wrong!!!",
                              message: "Try again")
         }
