@@ -7,13 +7,41 @@
 
 import UIKit
 
-class AuthorizationViewController: UIViewController {
+final class LoginViewController: UIViewController {//final - чтобы от этого класса не наследовались классы
+    
+    private let login = "user"
+    private let password = "password"
+    
+    @IBOutlet var userNameTF: UITextField!
+    @IBOutlet var passwordTF: UITextField!
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let loginVC = segue.destination as? WelcomeViewController else {return}
+        loginVC.userName = login
     }
-
-
+    
+    @IBAction func logInButtonPressed() {
+        if userNameTF.text != login && passwordTF.text != password {
+            showAlertMessage(title: "Your user name or password is wrong!!!",
+                             message: "Try again")
+        }
+    }
+    
+    @IBAction func remindLogin() {
+        showAlertMessage(title: "Ooops!",
+                         message: "Your login is \(login)")
+    }
+    
+    @IBAction func remindPassword() {
+        showAlertMessage(title: "Ooops!",
+                         message: "Your password is \(password)")
+    }
+    
+    private func showAlertMessage(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okButton = UIAlertAction(title: "Ok", style: .default)
+        alert.addAction(okButton)
+        present(alert, animated: true)
+    }
 }
 
